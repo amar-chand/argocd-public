@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-  - repoURL: https://github.com/amar-chand/argocd-public.git
+    repoURL: https://github.com/amar-chand/argocd-public.git
     targetRevision: HEAD
     path: examples/kustomize-to-modify-argo-manifests/overlays/prod/application/
   destination:

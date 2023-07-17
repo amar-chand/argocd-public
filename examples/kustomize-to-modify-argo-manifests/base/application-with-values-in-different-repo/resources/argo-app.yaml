@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-app
+  namespace: argocd
+spec:
+  project: default
+  sources:
+  - repoURL: 'https://charts.bitnami.com/bitnami'
+    chart: nginx
+    targetRevision: 15.1.0
+    helm:
+      valueFiles:
+      - $values/examples/kustomize-to-modify-argo-manifests/base/application-with-values-in-different-repo/resources/new-values.yaml
+  - repoURL: 'https://github.com/amar-chand/argocd-public.git'
+    targetRevision: main
+    ref: values
+  destination:
+    server: "https://kubernetes.default.svc"
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    retry:
+      limit: 2
+      backoff:
+        duration: 5s
+        maxDuration: 3m0s
+        factor: 2
+    syncOptions:
+    - CreateNamespace=true

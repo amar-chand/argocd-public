@@ -7,8 +7,8 @@ resources:
 patches:
 - target:
     kind: Application
-    name: sealed-secrets
+    name: helm-guestbook
   patch: |-
     - op: replace
-      path: /spec/source/helm/valuesFile
+      path: /spec/source/helm/valueFiles
       value: ["values-production.yaml"]

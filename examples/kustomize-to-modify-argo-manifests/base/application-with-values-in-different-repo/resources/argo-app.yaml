@@ -11,7 +11,7 @@ spec:
     targetRevision: 15.1.0
     helm:
       valueFiles:
-      - $values/examples/kustomize-to-modify-argo-manifests/base/application-with-values-in-different-repo/resources/new-values.yaml
+      - $values/examples/kustomize-to-modify-argo-manifests/base/application-with-values-in-different-repo/resources/old-values.yaml
   - repoURL: 'https://github.com/amar-chand/argocd-public.git'
     targetRevision: main
     ref: values
